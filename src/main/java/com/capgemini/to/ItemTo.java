@@ -1,62 +1,34 @@
-package com.capgemini.dataaccess.entity;
+package com.capgemini.to;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 import com.capgemini.dataaccess.enums.Category;
 import com.capgemini.dataaccess.enums.ItemStatus;
 
-@Entity
-@Table(name = "item")
-public class ItemEntity extends AbstractEntity {
+public class ItemTo extends AbstractTo {
 
-	@Column(length = 30)
-	@NotNull
 	private String name;
-
 	private String description;
-
-	@Enumerated(EnumType.STRING)
 	private Category category;
-
-	@NotNull
-	@Enumerated(EnumType.STRING)
 	private ItemStatus itemStatus;
-
 	private LocalDate notificationDate;
 	private LocalDate realizationDate;
 	private Float weight;
 	private String color;
 	private String photoUrl;
 	private Integer quantityOfStars;
+	private UserTo owner;
+	private UserTo finder;
+	private List<UserTo> wishList;
 
-	@ManyToOne
-	@JoinColumn(name = "id_user_owner")
-	private UserEntity owner;
+	public ItemTo() {
+	}
 
-	@ManyToOne
-	@JoinColumn(name = "id_user_finder")
-	private UserEntity finder;
-
-	@ManyToMany
-	@JoinTable(joinColumns = { @JoinColumn(name = "id_item") }, inverseJoinColumns = { @JoinColumn(name = "id_user") })
-	private List<UserEntity> wishList;
-
-	public ItemEntity(String name, String description, Category category, ItemStatus itemStatus,
+	public ItemTo(Long id, String name, String description, Category category, ItemStatus itemStatus,
 			LocalDate notificationDate, LocalDate realizationDate, Float weight, String color, String photoUrl,
-			Integer quantityOfStars, UserEntity owner, UserEntity finder, List<UserEntity> wishList) {
-		super();
+			Integer quantityOfStars, UserTo owner, UserTo finder, List<UserTo> wishList) {
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.category = category;
@@ -70,41 +42,6 @@ public class ItemEntity extends AbstractEntity {
 		this.owner = owner;
 		this.finder = finder;
 		this.wishList = wishList;
-	}
-
-	public ItemEntity() {
-	}
-
-	public Float getWeight() {
-		return weight;
-	}
-
-	public void setWeight(Float weight) {
-		this.weight = weight;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	public String getPhotoUrl() {
-		return photoUrl;
-	}
-
-	public void setPhotoUrl(String photoUrl) {
-		this.photoUrl = photoUrl;
-	}
-
-	public int getQuantityOfStars() {
-		return quantityOfStars;
-	}
-
-	public void setQuantityOfStars(int quantityOfStars) {
-		this.quantityOfStars = quantityOfStars;
 	}
 
 	public String getName() {
@@ -155,27 +92,59 @@ public class ItemEntity extends AbstractEntity {
 		this.realizationDate = realizationDate;
 	}
 
-	public UserEntity getOwner() {
+	public Float getWeight() {
+		return weight;
+	}
+
+	public void setWeight(Float weight) {
+		this.weight = weight;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+
+	public Integer getQuantityOfStars() {
+		return quantityOfStars;
+	}
+
+	public void setQuantityOfStars(Integer quantityOfStars) {
+		this.quantityOfStars = quantityOfStars;
+	}
+
+	public UserTo getOwner() {
 		return owner;
 	}
 
-	public void setOwner(UserEntity owner) {
+	public void setOwner(UserTo owner) {
 		this.owner = owner;
 	}
 
-	public UserEntity getFinder() {
+	public UserTo getFinder() {
 		return finder;
 	}
 
-	public void setFinder(UserEntity finder) {
+	public void setFinder(UserTo finder) {
 		this.finder = finder;
 	}
 
-	public List<UserEntity> getWishList() {
+	public List<UserTo> getWishList() {
 		return wishList;
 	}
 
-	public void setWishList(List<UserEntity> wishList) {
+	public void setWishList(List<UserTo> wishList) {
 		this.wishList = wishList;
 	}
 

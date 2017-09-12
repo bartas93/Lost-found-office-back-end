@@ -36,6 +36,19 @@ public class UserEntity extends AbstractEntity {
 	@ManyToMany(mappedBy = "wishList")
 	private List<ItemEntity> wishListItems;
 
+	public UserEntity(Long id, String name, String surname, String email, String phoneNumber,
+			List<ItemEntity> wishListItems) {
+		super(id);
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.wishListItems = wishListItems;
+	}
+
+	public UserEntity() {
+	}
+
 	public String getName() {
 		return name;
 	}
