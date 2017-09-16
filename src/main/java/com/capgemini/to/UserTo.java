@@ -6,15 +6,15 @@ public class UserTo extends AbstractTo {
 	private String surname;
 	private String email;
 	private String phoneNumber;
-	private int inWishLists;
+	private int inWishlists;
 
-	public UserTo(Long id, String name, String surname, String email, String phoneNumber, int inWishLists) {
+	public UserTo(Long id, String name, String surname, String email, String phoneNumber, int inWishlists) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.inWishLists = inWishLists;
+		this.inWishlists = inWishlists;
 	}
 
 	public UserTo() {
@@ -53,11 +53,11 @@ public class UserTo extends AbstractTo {
 	}
 
 	public int getInWishlists() {
-		return inWishLists;
+		return inWishlists;
 	}
 
 	public void setInWishlists(int inWishlists) {
-		this.inWishLists = inWishlists;
+		this.inWishlists = inWishlists;
 	}
 
 }

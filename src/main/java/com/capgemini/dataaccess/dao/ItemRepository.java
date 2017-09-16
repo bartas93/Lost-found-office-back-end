@@ -10,4 +10,5 @@ import com.capgemini.dataaccess.enums.ItemStatus;
 public interface ItemRepository extends JpaRepository<ItemEntity, Long> {
 
 	List<ItemEntity> findByItemStatus(ItemStatus itemStatus);
+
 }

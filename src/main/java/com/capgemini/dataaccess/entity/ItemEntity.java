@@ -39,7 +39,8 @@ public class ItemEntity extends AbstractEntity {
 	private Float weight;
 	private String color;
 	private String photoUrl;
-	private Integer quantityOfStars;
+	@Column(columnDefinition = "int default -1")
+	private int quantityOfStars = -1;
 
 	@ManyToOne
 	@JoinColumn(name = "id_user_owner")

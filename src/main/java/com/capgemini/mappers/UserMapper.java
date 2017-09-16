@@ -8,6 +8,9 @@ import com.capgemini.to.UserTo;
 
 public class UserMapper {
 	public static UserTo map(UserEntity userEntity) {
+		if (userEntity == null) {
+			return null;
+		}
 		return new UserTo(userEntity.getId(), userEntity.getName(), userEntity.getSurname(), userEntity.getEmail(),
 				userEntity.getPhoneNumber(), userEntity.getWishListItems().size());
 	}
@@ -17,4 +20,5 @@ public class UserMapper {
 		listOfUserEntity.forEach(u -> usersTo.add(UserMapper.map(u)));
 		return usersTo;
 	}
+
 }
