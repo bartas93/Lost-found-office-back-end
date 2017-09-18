@@ -6,6 +6,7 @@ import java.util.List;
 import com.capgemini.dataaccess.entity.ItemEntity;
 import com.capgemini.dataaccess.entity.UserEntity;
 import com.capgemini.to.ItemCardTo;
+import com.capgemini.to.ItemTableTo;
 import com.capgemini.to.ItemTo;
 
 public class ItemMapper {
@@ -41,6 +42,17 @@ public class ItemMapper {
 			item.setId(itemTo.getId());
 		}
 		return item;
+	}
+
+	public static ItemTableTo mapToItemTableTo(ItemEntity item) {
+		return new ItemTableTo(item.getId(), item.getName(), item.getCategory(), item.getItemStatus(),
+				item.getNotificationDate(), item.getWeight(), item.getColor());
+	}
+
+	public static List<ItemTableTo> mapToItemsTableTo(List<ItemEntity> items) {
+		List<ItemTableTo> itemsTo = new ArrayList<>();
+		items.forEach(i -> itemsTo.add(ItemMapper.mapToItemTableTo(i)));
+		return itemsTo;
 	}
 
 }

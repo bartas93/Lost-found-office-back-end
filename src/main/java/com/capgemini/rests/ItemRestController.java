@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.capgemini.service.ItemService;
 import com.capgemini.to.ItemCardTo;
+import com.capgemini.to.ItemTableTo;
 import com.capgemini.to.ItemTo;
 
 @CrossOrigin
@@ -28,13 +29,23 @@ public class ItemRestController {
 		return itemService.getItemsCardTo();
 	}
 
+	@RequestMapping(value = "/table-lost", method = RequestMethod.GET)
+	public List<ItemTableTo> getItemTableToLost() {
+		return itemService.getItemsTableToLost();
+	}
+
+	@RequestMapping(value = "/table-found", method = RequestMethod.GET)
+	public List<ItemTableTo> getItemTableToFound() {
+		return itemService.getItemsTableToFound();
+	}
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ItemTo getItemById(@PathVariable("id") Long id) {
 		return itemService.getItemById(id);
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-	public @ResponseBody ItemCardTo saveItemTo(@RequestBody ItemTo itemTo) {
+	public @ResponseBody ItemTo saveItemTo(@RequestBody ItemTo itemTo) {
 		return itemService.save(itemTo);
 	}
 

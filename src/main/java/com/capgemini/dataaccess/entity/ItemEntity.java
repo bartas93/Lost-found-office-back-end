@@ -9,6 +9,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -21,10 +22,11 @@ import com.capgemini.dataaccess.enums.ItemStatus;
 @Table(name = "item")
 public class ItemEntity extends AbstractEntity {
 
-	@Column(length = 30)
+	@Column(length = 80)
 	@NotNull
 	private String name;
 
+	@Lob
 	private String description;
 
 	@Enumerated(EnumType.STRING)
